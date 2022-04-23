@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
     Category.findAll({
         attributes: [
             "id",
-            "category-name"
+            "category-name",
+            "created_at"
         ],
         // be sure to include its associated Products
         include: [
@@ -34,7 +35,8 @@ router.get('/:id', (req, res) => {
       },
       attributes: [
           "id",
-          "category_name"
+          "category_name",
+          "created_at"
       ],
        // be sure to include its associated Products
       include: [
