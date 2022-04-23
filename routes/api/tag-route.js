@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { enable } = require('express/lib/application');
 const { Tag, Product, ProductTag } = require('../../models');
-const { tableName } = require('../../models/Category');
 
 // The `/api/tags` endpoint
 
