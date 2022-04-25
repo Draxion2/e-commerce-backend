@@ -9,14 +9,13 @@ router.get('/', (req, res) => {
   Tag.findAll({
     attributes: [
       "id",
-      "tag_name",
-      "created_at"
+      "tag_name"
     ],
     // be sure to include its associated Product data
     include: [
       {
         model: Product,
-        attributes: ["product_name", "price", "stock", "created_at"]
+        attributes: ["product_name", "price", "stock"]
       }
     ]
     })
@@ -35,14 +34,13 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       "id",
-      "tag_name",
-      "created_at"
+      "tag_name"
     ],
     // be sure to include its associated Product data
     include: [
       {
-        mdoel: Product,
-        attributes: ["product_name", "price", "stock", "created_at"]
+        model: Product,
+        attributes: ["product_name", "price", "stock"]
       }
     ]
   })

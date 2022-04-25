@@ -12,8 +12,7 @@ router.get('/', (req, res) => {
       "product_name",
       "price",
       "stock",
-      "category_id",
-      "created_at"
+      "category_id"
     ],
     // be sure to include its associated Category and Tag data
     include: [
@@ -27,10 +26,11 @@ router.get('/', (req, res) => {
       }
     ]
   })
-  .then(dbProductData => res.json(dbProductData).catch(err => {
+  .then(dbProductData => res.json(dbProductData))
+  .catch(err => {
     console.log(err);
     res.status(500).json(err);
-  }))
+  })
 });
 
 // get one product
@@ -45,8 +45,7 @@ router.get('/:id', (req, res) => {
       "product_name",
       "price",
       "stock",
-      "category_id",
-      "created_at"
+      "category_id"
     ],
     // be sure to include its associated Category and Tag data
     include: [
@@ -75,12 +74,7 @@ router.get('/:id', (req, res) => {
 
 // create new product
 router.post('/', (req, res) => {
-  Product.create({
-    product_name: req.body.product_name,
-    price: req.body.price,
-    stock: req.body.stock,
-    category_id: req.body.category_id
-  })
+  Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
